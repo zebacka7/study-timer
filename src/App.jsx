@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
+import notificationSound from "./assets/sounds/notification.wav";
 
 function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
@@ -12,7 +13,15 @@ function App() {
     const timer = setInterval(() => {
       setTimeLeft((prevTime) => {
         if (prevTime <= 1) {
-          setIsRunning(false);
+          {
+            setIsRunning(false);
+            const audio = new Audio(notificationSound);
+            audio.volume = 1.0;
+            audio
+
+              .play()
+              .catch((error) => console.log("Audio play blocked:", error));
+          }
 
           if (mode === "work") {
             setMode("break");
@@ -63,13 +72,19 @@ function App() {
   const handleSetBreak = () => {
     setIsRunning(false);
     setMode("break");
-    setTimeLeft(5 * 60);
+    setTimeLeft(10);
   };
 
   const handleCloseApp = () => {
     window.close();
   };
 
+  const handleMinimizeApp = () => {
+    if (window.require) {
+      const { ipcRenderer } = window.require("electron");
+      ipcRenderer.send("minimize-app");
+    }
+  };
   return (
     <>
       <svg width="0" height="0" style={{ position: "absolute" }}>
@@ -154,12 +169,20 @@ function App() {
         <div style={{ position: "relative" }}>
           <div>
             <button
+              className="minimizeBtn"
+              onClick={handleMinimizeApp}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              {" "}
+              -{" "}
+            </button>
+            <button
               className="closeBtn"
               onClick={handleCloseApp}
               style={{ WebkitAppRegion: "no-drag" }}
             >
               {" "}
-              Close{" "}
+              x{" "}
             </button>
           </div>
 
@@ -194,7 +217,7 @@ function App() {
                 Start{" "}
               </button>
               <button
-                className="StopTimer"
+                className="StopBtn"
                 onClick={handleClickFalse}
                 style={{ WebkitAppRegion: "no-drag" }}
               >

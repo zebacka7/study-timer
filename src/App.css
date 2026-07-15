@@ -24,6 +24,7 @@ body {
   box-sizing: border-box;
   gap: 0;
   background-color: #aa4465;
+  border-radius: 50px;
 }
 
 .modes-container {
@@ -56,9 +57,9 @@ body {
 }
 
 .BreakBtn.active {
-  background-color: #a89b8c;
+  background-color: #edf0da;
   color: #aa4465;
-  box-shadow: 0 4px 14px rgba(168, 155, 140, 0.3);
+  box-shadow: 0 4px 14px rgba(237, 240, 218, 0.3);
 }
 
 .visual-center {
@@ -149,7 +150,7 @@ body {
 }
 
 .StartBtn,
-.StopTimer,
+.StopBtn,
 .ResetTimer {
   font-family: "Singsong", sans-serif;
   font-weight: 700;
@@ -174,20 +175,20 @@ body {
   transform: translateY(-2px);
 }
 
-.StopTimer {
-  background-color: #8f5c38;
-  color: #f0dfad;
+.StopBtn {
+  background-color: #f0dfad;
+  color: #aa4465;
   border: none;
 }
 
-.StopTimer:hover {
-  background-color: #aa734d;
+.StopBtn:hover {
+  background-color: #fff4d1;
   transform: translateY(-2px);
 }
 
 .ResetTimer {
-  background-color: #8f5c38;
-  color: #a89b8c;
+  background-color: #f0dfad;
+  color: #aa4465;
   border: none;
 }
 
@@ -202,16 +203,32 @@ body {
   border: none;
   color: rgba(240, 223, 173, 0.4);
   font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 20px;
   cursor: pointer;
-  font-size: 0.85rem;
   font-weight: 600;
   transition: color 0.2s;
   position: fixed;
   margin-top: 5px;
   right: 0;
-  margin-right: 30px;
+  margin-right: 35px;
 }
 
-.closeBtn:hover {
+.minimizeBtn {
+  background: transparent;
+  border: none;
+  color: rgba(240, 223, 173, 0.4);
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.2s;
+  position: fixed;
+  margin-top: 5px;
+  right: 0;
+  margin-right: 65px;
+}
+
+.closeBtn:hover,
+.minimizeBtn:hover {
   color: #8f5c38;
 }

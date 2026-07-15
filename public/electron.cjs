@@ -1,6 +1,4 @@
-// win.webContents.openDevTools();
-
-const { app, BrowserWindow, Menu } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain } = require("electron");
 const process = require("process");
 
 const createWindow = () => {
@@ -12,6 +10,10 @@ const createWindow = () => {
     backgroundColor: "#00000000",
     hasShadow: false,
     transparent: true,
+    webPreferences: {
+      nodeIntegration: true,
+      contextIsolation: false,
+    },
   });
   Menu.setApplicationMenu(null);
   win.loadURL("http://localhost:5173");
@@ -19,6 +21,11 @@ const createWindow = () => {
 
 app.whenReady().then(() => {
   createWindow();
+});
+
+ipcMain.on("minimize-app", () => {
+  const win = BrowserWindow.getFocusedWindow();
+  if (win) win.minimize();
 });
 
 app.on("activate", () => {
