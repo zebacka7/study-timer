@@ -72,7 +72,7 @@ function App() {
   const handleSetBreak = () => {
     setIsRunning(false);
     setMode("break");
-    setTimeLeft(10);
+    setTimeLeft(5 * 60);
   };
 
   const handleCloseApp = () => {
