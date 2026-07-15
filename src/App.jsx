@@ -66,45 +66,154 @@ function App() {
     setTimeLeft(5 * 60);
   };
 
+  const handleCloseApp = () => {
+    window.close();
+  };
+
   return (
-    <div style={{ position: "relative" }}>
-      <div>
-        <button className="closeBtn"> Close </button>
-      </div>
+    <>
+      <svg width="0" height="0" style={{ position: "absolute" }}>
+        <defs>
+          <mask id="stamp-mask" maskUnits="objectBoundingBox">
+            <rect width="500" height="700" fill="white" />
+            <g fill="black">
+              <circle cx="0" cy="0" r="18" />
+              <circle cx="45" cy="0" r="18" />
+              <circle cx="91" cy="0" r="18" />
+              <circle cx="136" cy="0" r="18" />
+              <circle cx="182" cy="0" r="18" />
+              <circle cx="227" cy="0" r="18" />
+              <circle cx="273" cy="0" r="18" />
+              <circle cx="318" cy="0" r="18" />
+              <circle cx="364" cy="0" r="18" />
+              <circle cx="409" cy="0" r="18" />
+              <circle cx="455" cy="0" r="18" />
+              <circle cx="500" cy="0" r="18" />
 
-      <div>
-        <button
-          className={`WorkBtn ${mode === "work" ? "active" : ""}`}
-          onClick={handleSetWork}
-        >
-          {" "}
-          Work{" "}
-        </button>
-        <button
-          className={`BreakBtn ${mode === "break" ? "active" : ""}`}
-          onClick={handleSetBreak}
-        >
-          {" "}
-          Break{" "}
-        </button>
-      </div>
+              <circle cx="0" cy="700" r="18" />
+              <circle cx="45" cy="700" r="18" />
+              <circle cx="91" cy="700" r="18" />
+              <circle cx="136" cy="700" r="18" />
+              <circle cx="182" cy="700" r="18" />
+              <circle cx="227" cy="700" r="18" />
+              <circle cx="273" cy="700" r="18" />
+              <circle cx="318" cy="700" r="18" />
+              <circle cx="364" cy="700" r="18" />
+              <circle cx="409" cy="700" r="18" />
+              <circle cx="455" cy="700" r="18" />
+              <circle cx="500" cy="700" r="18" />
 
-      <div className="TimerDisplay">
-        {FormatTime(timeLeft)}
-        <button className="StartBtn" onClick={handleClickTrue}>
-          {" "}
-          Start{" "}
-        </button>
-        <button className="StopTimer" onClick={handleClickFalse}>
-          {" "}
-          Stop{" "}
-        </button>
-        <button className="ResetTimer" onClick={handleReset}>
-          {" "}
-          Reset{" "}
-        </button>
+              <circle cx="0" cy="0" r="18" />
+              <circle cx="0" cy="47" r="18" />
+              <circle cx="0" cy="93" r="18" />
+              <circle cx="0" cy="140" r="18" />
+              <circle cx="0" cy="186" r="18" />
+              <circle cx="0" cy="233" r="18" />
+              <circle cx="0" cy="280" r="18" />
+              <circle cx="0" cy="326" r="18" />
+              <circle cx="0" cy="373" r="18" />
+              <circle cx="0" cy="420" r="18" />
+              <circle cx="0" cy="466" r="18" />
+              <circle cx="0" cy="513" r="18" />
+              <circle cx="0" cy="560" r="18" />
+              <circle cx="0" cy="606" r="18" />
+              <circle cx="0" cy="653" r="18" />
+              <circle cx="0" cy="700" r="18" />
+
+              <circle cx="500" cy="0" r="18" />
+              <circle cx="500" cy="47" r="18" />
+              <circle cx="500" cy="93" r="18" />
+              <circle cx="500" cy="140" r="18" />
+              <circle cx="500" cy="186" r="18" />
+              <circle cx="500" cy="233" r="18" />
+              <circle cx="500" cy="280" r="18" />
+              <circle cx="500" cy="326" r="18" />
+              <circle cx="500" cy="373" r="18" />
+              <circle cx="500" cy="420" r="18" />
+              <circle cx="500" cy="466" r="18" />
+              <circle cx="500" cy="513" r="18" />
+              <circle cx="500" cy="560" r="18" />
+              <circle cx="500" cy="606" r="18" />
+              <circle cx="500" cy="653" r="18" />
+              <circle cx="500" cy="700" r="18" />
+            </g>
+          </mask>
+        </defs>
+      </svg>
+
+      <div
+        className="app-layout"
+        style={{
+          display: "flex",
+          border: "24px solid #F0DFAD",
+          WebkitAppRegion: "drag",
+          WebkitMaskImage: "url(#stamp-mask)",
+          maskImage: "url(#stamp-mask)",
+        }}
+      >
+        <div style={{ position: "relative" }}>
+          <div>
+            <button
+              className="closeBtn"
+              onClick={handleCloseApp}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              {" "}
+              Close{" "}
+            </button>
+          </div>
+
+          <div>
+            <button
+              className={`WorkBtn ${mode === "work" ? "active" : ""}`}
+              onClick={handleSetWork}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              {" "}
+              Work{" "}
+            </button>
+            <button
+              className={`BreakBtn ${mode === "break" ? "active" : ""}`}
+              onClick={handleSetBreak}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              {" "}
+              Break{" "}
+            </button>
+          </div>
+
+          <div className="TimerDisplay">
+            {FormatTime(timeLeft)}
+            <div className="StartStopBtns">
+              <button
+                className="StartBtn"
+                onClick={handleClickTrue}
+                style={{ WebkitAppRegion: "no-drag" }}
+              >
+                {" "}
+                Start{" "}
+              </button>
+              <button
+                className="StopTimer"
+                onClick={handleClickFalse}
+                style={{ WebkitAppRegion: "no-drag" }}
+              >
+                {" "}
+                Stop{" "}
+              </button>
+            </div>
+            <button
+              className="ResetTimer"
+              onClick={handleReset}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              {" "}
+              Reset{" "}
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

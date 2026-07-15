@@ -1,11 +1,19 @@
-const { app, BrowserWindow } = require("electron");
+// win.webContents.openDevTools();
+
+const { app, BrowserWindow, Menu } = require("electron");
 const process = require("process");
 
 const createWindow = () => {
   const win = new BrowserWindow({
-    width: 1200,
-    height: 1200,
+    width: 500,
+    height: 700,
+    frame: false,
+    resizable: false,
+    backgroundColor: "#00000000",
+    hasShadow: false,
+    transparent: true,
   });
+  Menu.setApplicationMenu(null);
   win.loadURL("http://localhost:5173");
 };
 

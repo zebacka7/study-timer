@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="450" height="550" viewBox="0 0 450 550">
+  <mask id="stamp">
+    <!-- Biały kolor oznacza to, co zostaje w aplikacji -->
+    <rect width="450" height="550" fill="white" rx="10" />
+    <!-- Czarne kółka to elementy, które fizycznie WYCINAJĄ okno na wylot do pulpitu -->
+    <!-- Góra i Dół -->
+    <g fill="black">
+      <circle cx="25" cy="0" r="8" /><circle cx="55" cy="0" r="8" /><circle cx="85" cy="0" r="8" /><circle cx="115" cy="0" r="8" /><circle cx="145" cy="0" r="8" /><circle cx="175" cy="0" r="8" /><circle cx="205" cy="0" r="8" /><circle cx="235" cy="0" r="8" /><circle cx="265" cy="0" r="8" /><circle cx="295" cy="0" r="8" /><circle cx="325" cy="0" r="8" /><circle cx="355" cy="0" r="8" /><circle cx="385" cy="0" r="8" /><circle cx="425" cy="0" r="8" />
+      <circle cx="25" cy="550" r="8" /><circle cx="55" cy="550" r="8" /><circle cx="85" cy="550" r="8" /><circle cx="115" cy="550" r="8" /><circle cx="145" cy="550" r="8" /><circle cx="175" cy="550" r="8" /><circle cx="205" cy="550" r="8" /><circle cx="235" cy="550" r="8" /><circle cx="265" cy="550" r="8" /><circle cx="295" cy="550" r="8" /><circle cx="325" cy="550" r="8" /><circle cx="355" cy="550" r="8" /><circle cx="385" cy="550" r="8" /><circle cx="425" cy="550" r="8" />
+      <!-- Lewo i Prawo -->
+      <circle cx="0" cy="30" r="8" /><circle cx="0" cy="65" r="8" /><circle cx="0" cy="100" r="8" /><circle cx="0" cy="135" r="8" /><circle cx="0" cy="170" r="8" /><circle cx="0" cy="205" r="8" /><circle cx="0" cy="240" r="8" /><circle cx="0" cy="275" r="8" /><circle cx="0" cy="310" r="8" /><circle cx="0" cy="345" r="8" /><circle cx="0" cy="380" r="8" /><circle cx="0" cy="415" r="8" /><circle cx="0" cy="450" r="8" /><circle cx="0" cy="485" r="8" /><circle cx="0" cy="520" r="8" />
+      <circle cx="450" cy="30" r="8" /><circle cx="450" cy="65" r="8" /><circle cx="450" cy="100" r="8" /><circle cx="450" cy="135" r="8" /><circle cx="450" cy="170" r="8" /><circle cx="450" cy="205" r="8" /><circle cx="450" cy="240" r="8" /><circle cx="450" cy="275" r="8" /><circle cx="450" cy="310" r="8" /><circle cx="450" cy="345" r="8" /><circle cx="450" cy="380" r="8" /><circle cx="450" cy="415" r="8" /><circle cx="450" cy="450" r="8" /><circle cx="450" cy="485" r="8" /><circle cx="450" cy="520" r="8" />
+    </g>
+  </mask>
+  <!-- Nakładamy maskę na widoczny prostokąt -->
+  <rect width="450" height="550" fill="white" mask="url(#stamp)" />
+</svg>
