@@ -235,6 +235,13 @@ function App() {
             </button>
           </div>
         </div>
+        <button
+          className="SettingsBtn"
+          /* onClick={} */
+          style={{ WebkitAppRegion: "no-drag" }}
+        >
+          <span className="mdi--gear"></span>
+        </button>
       </div>
     </>
   );
