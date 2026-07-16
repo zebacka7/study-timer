@@ -6,6 +6,8 @@ function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isRunning, setIsRunning] = useState(false);
   const [mode, setMode] = useState("work");
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const [isSoundOn, setIsSoundOn] = useState(true);
 
   useEffect(() => {
     if (!isRunning) return;
@@ -15,12 +17,14 @@ function App() {
         if (prevTime <= 1) {
           {
             setIsRunning(false);
-            const audio = new Audio(notificationSound);
-            audio.volume = 1.0;
-            audio
 
-              .play()
-              .catch((error) => console.log("Audio play blocked:", error));
+            if (isSoundOn === true) {
+              const audio = new Audio(notificationSound);
+              audio.volume = 1.0;
+              audio
+                .play()
+                .catch((error) => console.log("Audio play blocked:", error));
+            }
           }
 
           if (mode === "work") {
@@ -36,7 +40,7 @@ function App() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [isRunning, mode]);
+  }, [isRunning, mode, isSoundOn]);
 
   const handleClickTrue = () => {
     if (!isRunning) {
@@ -85,6 +89,7 @@ function App() {
       ipcRenderer.send("minimize-app");
     }
   };
+
   return (
     <>
       <svg width="0" height="0" style={{ position: "absolute" }}>
@@ -160,6 +165,7 @@ function App() {
         className="app-layout"
         style={{
           display: "flex",
+          position: "relative",
           border: "24px solid #F0DFAD",
           WebkitAppRegion: "drag",
           WebkitMaskImage: "url(#stamp-mask)",
@@ -236,12 +242,32 @@ function App() {
           </div>
         </div>
         <button
-          className="SettingsBtn"
-          /* onClick={} */
+          className={`SettingsBtn ${isSettingsOpen ? "active" : ""}`}
+          onClick={() => setIsSettingsOpen(!isSettingsOpen)}
           style={{ WebkitAppRegion: "no-drag" }}
         >
           <span className="mdi--gear"></span>
         </button>
+
+        <div
+          className={`SettingsPanel ${isSettingsOpen ? "open" : ""}`}
+          style={{ WebkitAppRegion: "no-drag" }}
+        >
+          <h3> Settings</h3>
+          <hr className="settings-divider" />
+
+          <div className="settings-content">
+            <button
+              className={`SoundTogglerBtn ${isSoundOn ? "active" : ""}`}
+              onClick={() => setIsSoundOn(!isSoundOn)}
+              style={{ WebkitAppRegion: "no-drag" }}
+            >
+              Sound {isSoundOn ? "ON" : "OFF"}
+            </button>
+            <p> theme changer </p>
+            <p> timer changer</p>
+          </div>
+        </div>
       </div>
     </>
   );
